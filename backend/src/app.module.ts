@@ -6,6 +6,7 @@ import { DisciplineService } from './disciplina/discipline.service';
 import { DisciplineModule } from './disciplina/discipline.module';
 import { DisciplineController } from './disciplina/discipline.controller';
 import { UploadModule } from './modules/upload/upload.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
   imports: [
@@ -30,6 +31,8 @@ import { UploadModule } from './modules/upload/upload.module';
     DisciplineModule,
 
     UploadModule,
+
+    AuthModule,
   ],
   controllers: [DisciplineController],
   providers: [],
