@@ -37,7 +37,7 @@ export default function Login({ navigation }: any) {
         onChangeText={setSenha}
       />
 
-      <TouchableOpacity onPress={() => navigation.navigate('EsqueceuSenha')}>
+      <TouchableOpacity onPress={() => navigation.navigate('esqueceuSenha')}>
         <Text style={styles.link}>Esqueceu sua senha?</Text>
       </TouchableOpacity>
 
