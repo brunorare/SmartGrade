@@ -1,6 +1,6 @@
 import { Tabs } from "expo-router";
 
-export default function AlunoTabsLayout() {
+export default function ProfessorTabsLayout() {
   return (
     <Tabs>
       <Tabs.Screen
@@ -11,16 +11,23 @@ export default function AlunoTabsLayout() {
       />
 
       <Tabs.Screen
-        name="Feedback/index"
+        name="CriarRubrica"
         options={{
-          title: "Feedback",
+          title: "Rubrica",
         }}
       />
 
       <Tabs.Screen
-        name="TelaEnvio/index"
+        name="listarAtividades"
         options={{
-          title: "Enviar",
+          title: "Atividades",
+        }}
+      />
+
+      <Tabs.Screen
+        name="Feedback"
+        options={{
+          title: "Feedback",
         }}
       />
     </Tabs>

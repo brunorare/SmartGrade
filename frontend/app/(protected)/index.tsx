@@ -1,16 +1,13 @@
-import { View, TouchableOpacity, Text } from "react-native";
-import { useAuth } from "hooks/useAuth";
-import { use } from "react";
+import { Redirect } from "expo-router";
+import { useContext } from "react";
+import { AuthContext } from "../contexts/authContext";
 
-export default function Index() {
+export default function ProtectedIndex() {
+  const { roleUser } = useContext(AuthContext);
 
-    const {signOut} = useAuth()
+  if (roleUser === "PROFESSOR") {
+    return <Redirect href="/(protected)/professor/(tabs)" />;
+  }
 
-    return (
-        <View>
-            <TouchableOpacity onPress={signOut}>
-                <Text>Sair</Text>
-            </TouchableOpacity>
-        </View>
-    )
+  return <Redirect href="/(protected)/aluno/(tabs)" />;
 }

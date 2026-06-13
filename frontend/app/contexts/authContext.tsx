@@ -18,7 +18,7 @@ export const AuthContext = createContext<AuthState>({} as AuthState)
 
 export default function AuthProvider({children} : PropsWithChildren){
     const [isLoggedIn, setIsLoggedIn] = useState(false)
-    const [isReady, setIsReady]=useState(true)
+    const [isReady, setIsReady]=useState(false)
     const [roleUser, setRoleUser] = useState("")
     const [token, setToken] = useState<string | null>(null);
     const [userId, setUserId] = useState<number | null>(null);
@@ -43,7 +43,11 @@ export default function AuthProvider({children} : PropsWithChildren){
             token,
             userId})
         
-        router.replace("/(protected)/aluno/Feedback")
+        if (role === "PROFESSOR") {
+            router.replace("/(protected)/professor/(tabs)");
+        } else {
+            router.replace("/(protected)/aluno/(tabs)");
+        }
     }
 
     function signOut() {
@@ -66,8 +70,11 @@ export default function AuthProvider({children} : PropsWithChildren){
                 const storageState = await AsyncStorage.getItem(AUTH_STORAGE_KEY)
                 const state = storageState ? JSON.parse(storageState) : null;     
                 
-                setRoleUser(state?.roleUser ?? "");
-                console.log("roleUSer --->", roleUser)
+                const role = state?.roleUser ?? "";
+
+                setRoleUser(role);
+
+                console.log("roleUser --->", role);
 
                 setToken(state?.token ?? null);
                 setUserId(state?.userId ?? null);
