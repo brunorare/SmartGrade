@@ -1,16 +1,19 @@
 import { Tabs } from "expo-router";
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 export default function ProfessorTabsLayout() {
   return (
     <Tabs
       screenOptions={{
       headerShown: false,
+      tabBarActiveTintColor: 'purple'
     }}>
       <Tabs.Screen
         name="index"
         options={{
           headerShown: false,
           title: "Home",
+          tabBarIcon: ({ color }) => <FontAwesome size={28} name="home" color={color} />
         }}
       />
 
